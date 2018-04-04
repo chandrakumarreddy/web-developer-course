@@ -1,0 +1,17 @@
+body {
+    font-family: cursive;
+}
+h1 {
+    margin-left: 1.33%;
+    font-size: 24px;
+}
+#image-gallery {
+    height: 100px;
+}
+img {
+    height: 100%;
+    float: left;
+    width: 32%;
+    height: 250px;
+    margin: 0 0 1% 1%;
+}
