@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+}
+body {
+    background-image: url("image.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: cursive;
+}
+.content {
+    text-align: center;
+    padding-top: 25%;
+}
+hr {
+    width: 30%;
+}
+h1, h3 {
+    color: #fff;
+}
+button {
+    letter-spacing: 1px;
+}
