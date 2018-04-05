@@ -5,17 +5,21 @@ body {
     background-image: url("image.jpg");
     background-size: cover;
     background-position: center;
-    font-family: cursive;
 }
 .content {
     text-align: center;
-    padding-top: 25%;
+    padding-top: 24%;
+    color: #fff;
 }
 hr {
     width: 30%;
 }
-h1, h3 {
-    color: #fff;
+h1 {
+    font-size: 4em;
+    box-shadow:
+}
+h3 {
+    font-size: 1.5em;
 }
 button {
     letter-spacing: 1px;
