@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<div class="lead text-center" style="margin-bottom:10px">YelpCamp</div>
+<div class="list-group">
+  <a href="#" class="list-group-item active">categorie-01</a>
+  <a href="#" class="list-group-item">categorie-01</a>
+  <a href="#" class="list-group-item">categorie-01</a>
+</div>
+</div>
+<div class="col-md-9">
+<div class="thumbnail">
+<img src="<%= campground.image%>" style="width:100%">
+<div class="caption">
+<span class="pull-right">&#36; 9.00 /day</span>
+<a href="#"><h4><%= campground.title%></h4></a>
+<p><%= campground.description%></p>
+<a href="#" class="btn btn-primary">edit</a>
+<a href="#" class="btn btn-danger">delete</a>
+</div>
+</div>
+<div class="well">
+<a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">add new comment</a>
+</div>
+</div>
+</div>
+</div>
+<% include ../partials/footer %>
