@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const Campground = require('./models/campground');
+const Comment = require('./models/comment');
 let data = [{
     title: 'campground-01',
-    image: "https://cdn.pixabay.com/photo/2017/08/04/20/04/camping-2581242_960_720.jpg",
+    image: "https://farm9.staticflickr.com/8038/7930463550_42c3f82870.jpg",
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim eos qui architecto tempore omnis deleniti tenetur reprehenderit eum, itaque odit cumque quisquam ex sit, ullam ipsum voluptatibus sapiente nobis ratione.'
 }, {
     title: 'campground-02',
@@ -20,7 +21,27 @@ function seed() {
             console.log(err);
         } else {
             data.forEach(function(e) {
-                Campground.create(e);
+                Campground.create(e, function(err, campground) {
+                    if (err) {
+                        console.log("error");
+                    } else {
+                        Comment.create({
+                            author: "chandra",
+                            comment: "one upon a time i had a story of my life which turned to be a most dratsic of life"
+                        }, function(err, comment) {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                campground.comments.push(comment);
+                                campground.save(function(err, campground) {
+                                    if (err) {
+                                        console.log(err);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
             });
         }
     });

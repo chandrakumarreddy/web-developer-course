@@ -26,28 +26,31 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#">
-                                <span class="glyphicon glyphicon-user">
-                                </span>
-                                Sign Up
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="glyphicon glyphicon-log-in">
-                                </span>
-                                Login
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="glyphicon glyphicon-log-out">
-                                </span>
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                        <% if(!currentUser){ %>
+                            <li>
+                                <a href="/register">
+                                    Sign Up
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/login">
+                                    Login
+                                </a>
+                            </li>
+                            <%}else{%>
+                                <li>
+                                    <a href="#">
+                                        Signed in as
+                                        <%=currentUser.username%>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/logout">
+                                            Logout
+                                        </a>
+                                    </li>
+                                    <%}%>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>

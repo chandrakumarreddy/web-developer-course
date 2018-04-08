@@ -21,7 +21,13 @@
 </div>
 </div>
 <div class="well">
-<a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">add new comment</a>
+<div style="position:relative;"><a href="/campgrounds/<%= campground._id %>/comment/new" class="btn btn-primary" style="position:absolute;top:-6px;right:0;">add new comment</a></div>
+<% campground.comments.forEach(function(e){%>
+<div style="margin:20px 0 10px 0;">
+<strong><%=e.author%></strong>
+<p><%=e.comment%></p>
+</div>
+<%});%>
 </div>
 </div>
 </div>
