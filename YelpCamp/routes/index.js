@@ -39,7 +39,4 @@ router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/campgrounds');
 });
-router.get('*', function(req, res) {
-    res.send('page not found');
-});
 module.exports = router;

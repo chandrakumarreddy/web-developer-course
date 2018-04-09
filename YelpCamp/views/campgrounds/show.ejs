@@ -33,9 +33,9 @@
 <div style="margin:20px 0 10px 0;">
 <strong><%=e.author.username%></strong>
 <p><%=e.comment%></p>
-<a href="#" class="btn btn-primary btn-xs">edit</a>
-<form action="" method="post" style="display:inline;">
-<button class="btn btn-danger btn-xs" type="submit">delete</button>
+<a href="/campgrounds/<%=campground._id%>/comment/<%= e._id %>/edit" class="btn btn-primary btn-xs">edit</a>
+<form action="/campgrounds/<%= campground._id%>/comment/<%= e._id %>?_method=DELETE" method="POST" style="display:inline;">
+<button class="btn btn-danger btn-xs">delete</button>
 </form>
 </div>
 </div>

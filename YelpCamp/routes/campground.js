@@ -52,7 +52,7 @@ router.get('/campgrounds/:id', isLoggedIn, function(req, res) {
         }
     });
 });
-router.get('/campgrounds/:id/edit', function(req, res) {
+router.get('/campgrounds/:id/edit', checkOwnerShip, function(req, res) {
     Campground.findById(req.params.id, function(err, campground) {
         if (err) {
             res.redirect("back");
@@ -77,7 +77,7 @@ router.put('/campgrounds/:id', function(req, res) {
         }
     });
 });
-router.delete('/campgrounds/:id', function(req, res) {
+router.delete('/campgrounds/:id', checkOwnerShip, function(req, res) {
     Campground.findByIdAndRemove(req.params.id, function(err, campground) {
         if (err) {
             console.log(err);
@@ -92,6 +92,20 @@ function isLoggedIn(req, res, next) {
         return next();
     } else {
         res.redirect('/login');
+    }
+}
+
+function checkOwnerShip(req, res, next) {
+    if (req.isAuthenticated()) {
+        Campground.findById(req.params.id, function(err, campground) {
+            if ((campground.author.id).equals(req.user._id)) {
+                next();
+            } else {
+                res.redirect('back');
+            }
+        });
+    } else {
+        res.redirect('back');
     }
 }
 module.exports = router;

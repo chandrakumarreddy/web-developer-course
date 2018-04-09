@@ -9,12 +9,12 @@ const express = require('express'),
     User = require('../models/user'),
     Campground = require('../models/campground'),
     Comment = require('../models/comment');
-router.get('/campgrounds/:id/comment/new', isLoggedIn, function(req, res) {
+router.get('/campgrounds/:id/comment/new', function(req, res) {
     res.render('comments/new', {
         id: req.params.id
     });
 });
-router.post('/campgrounds/:id/comment', isLoggedIn, function(req, res) {
+router.post('/campgrounds/:id/comment', function(req, res) {
     Campground.findById(req.params.id, function(err, campground) {
         if (err) {
             console.log(err);
@@ -39,6 +39,40 @@ router.post('/campgrounds/:id/comment', isLoggedIn, function(req, res) {
                     });
                 }
             })
+        }
+    });
+});
+router.get('/campgrounds/:id/comment/:comment_id/edit', isLoggedIn, function(req, res) {
+    let campground_id = req.params.id;
+    Comment.findById(req.params.comment_id, function(err, comment) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('comments/edit', {
+                campground_id: campground_id,
+                comment: comment
+            });
+        }
+    });
+});
+router.put('/campgrounds/:id/comment/:comment_id', function(req, res) {
+    let campground_id = req.params.id;
+    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, comment) {
+        if (err) {
+            console.log(err);
+            res.redirect('back');
+        } else {
+            console.log(comment);
+            res.redirect('/campgrounds/' + campground_id);
+        }
+    })
+});
+router.delete('/campgrounds/:id/comment/:comment_id', function(req, res) {
+    Comment.findByIdAndRemove(req.params.comment_id, function(err, campground) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/campgrounds' + req.params.id);
         }
     });
 });
