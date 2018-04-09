@@ -12,10 +12,10 @@
 <div class="col-md-3 col-sm-6">
 <div class="thumbnail">
 <div><img src="<%= campground.image %>" style="width:100%"></div>
-<div class="caption">
+<div class="caption" id="caption">
 <p><%= campground.title %></p>
 </div>
-<a href="/campgrounds/<%=campground._id %>" class="btn btn-primary">view</a>
+<a href="/campgrounds/<%=campground._id %>" class="btn btn-primary" style="margin-bottom:5px">view</a>
 </div>
 </div>
 <%});%>
