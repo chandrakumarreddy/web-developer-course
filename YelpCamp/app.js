@@ -16,7 +16,7 @@ const campgroundRoutes = require('./routes/campground.js'),
 /////////////////////////////////////////
 ///////////middleware
 ////////////////////////////////////////
-led database = process.env.DATABASEURL || 'mongodb://localhost/yelpcamp';
+let database = process.env.DATABASEURL || 'mongodb://localhost/yelpcamp';
 mongoose.connect(database);
 const app = express().use(bodyParser.urlencoded({
     extended: false
