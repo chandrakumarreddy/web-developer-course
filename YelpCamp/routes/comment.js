@@ -62,7 +62,6 @@ router.put('/campgrounds/:id/comment/:comment_id', function(req, res) {
             console.log(err);
             res.redirect('back');
         } else {
-            console.log(comment);
             res.redirect('/campgrounds/' + campground_id);
         }
     })
