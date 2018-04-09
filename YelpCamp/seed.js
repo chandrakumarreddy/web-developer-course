@@ -20,29 +20,29 @@ function seed() {
         if (err) {
             console.log(err);
         } else {
-            data.forEach(function(e) {
-                Campground.create(e, function(err, campground) {
-                    if (err) {
-                        console.log("error");
-                    } else {
-                        Comment.create({
-                            author: "chandra",
-                            comment: "one upon a time i had a story of my life which turned to be a most dratsic of life"
-                        }, function(err, comment) {
-                            if (err) {
-                                console.log(err);
-                            } else {
-                                campground.comments.push(comment);
-                                campground.save(function(err, campground) {
-                                    if (err) {
-                                        console.log(err);
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
-            });
+            // data.forEach(function(e) {
+            //     Campground.create(e, function(err, campground) {
+            //         if (err) {
+            //             console.log("error");
+            //         } else {
+            //             Comment.create({
+            //                 author: "chandra",
+            //                 comment: "one upon a time i had a story of my life which turned to be a most dratsic of life"
+            //             }, function(err, comment) {
+            //                 if (err) {
+            //                     console.log(err);
+            //                 } else {
+            //                     campground.comments.push(comment);
+            //                     campground.save(function(err, campground) {
+            //                         if (err) {
+            //                             console.log(err);
+            //                         }
+            //                     });
+            //                 }
+            //             });
+            //         }
+            //     });
+            // });
         }
     });
 }

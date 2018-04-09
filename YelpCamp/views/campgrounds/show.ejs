@@ -16,16 +16,23 @@
 <span class="pull-right">&#36; 9.00 /day</span>
 <a href="#"><h4><%= campground.title%></h4></a>
 <p><%= campground.description%></p>
-<a href="#" class="btn btn-primary">edit</a>
-<a href="#" class="btn btn-danger">delete</a>
+<p><i>submitted by</i> <em><%=campground.author.username %></em></p>
+<a href="/campgrounds/<%= campground._id%>/edit" class="btn btn-primary btn-xs">edit</a>
+<form action="/campgrounds/<%= campground._id%>?_method=DELETE" method="POST" style="display:inline;">
+<button class="btn btn-danger btn-xs">delete</button>
+</form>
 </div>
 </div>
 <div class="well">
-<div style="position:relative;"><a href="/campgrounds/<%= campground._id %>/comment/new" class="btn btn-primary" style="position:absolute;top:-6px;right:0;">add new comment</a></div>
+<div style="position:relative;margin-bottom:30px"><a href="/campgrounds/<%= campground._id %>/comment/new" class="btn btn-primary" style="position:absolute;top:-6px;right:0;">add new comment</a></div>
 <% campground.comments.forEach(function(e){%>
+<div class="row">
+<div class="col-md-12">
 <div style="margin:20px 0 10px 0;">
-<strong><%=e.author%></strong>
+<strong><%=e.author.username%></strong>
 <p><%=e.comment%></p>
+</div>
+</div>
 </div>
 <%});%>
 </div>
@@ -33,3 +40,4 @@
 </div>
 </div>
 <% include ../partials/footer %>
+
