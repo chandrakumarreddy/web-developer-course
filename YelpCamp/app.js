@@ -16,7 +16,8 @@ const campgroundRoutes = require('./routes/campground.js'),
 /////////////////////////////////////////
 ///////////middleware
 ////////////////////////////////////////
-mongoose.connect('mongodb://localhost/yelpcamp');
+led database = process.env.DATABASEURL || 'mongodb://localhost/yelpcamp';
+mongoose.connect(database);
 const app = express().use(bodyParser.urlencoded({
     extended: false
 })).use(bodyParser.json()).set('view engine', 'ejs').use(methodOverride('_method')).use(express.static("public")).use(expressSession({
